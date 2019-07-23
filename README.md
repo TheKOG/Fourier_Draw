@@ -4,6 +4,7 @@ Project usage process:
 Note: the higher the threshold, the more sparse the contour
 3. Run the Fourier.exe
 4. Press F5 to start drawing
+
 -----------------------------------You can skip the following-----------------------------------
 Fourier.exe using advanced tutorials:
 1. Click the screen in order to form a dot matrix
