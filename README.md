@@ -44,7 +44,7 @@ fourier.exe使用进阶教程:
 
 ## 算法介绍
 
-对于kruskal.cpp:	边缘算子, Delaunay三角剖分算法, kruskal最小生成树算法, Douglas算法;
+对于kruskal.cpp:	边缘算子, Delaunay三角剖分算法, kruskal最小生成树算法, Douglas-Peucker算法;
 
 对于fourier.cpp:	快速傅里叶变换算法, 逆离散傅里叶变换算法;
 
@@ -99,7 +99,7 @@ For fourier.cpp: 	g++ fourier.cpp -o fourier -lgdi32 -mwindows
 
 ## Introduction to algorithms
 
-For kruskal.cpp: edge operator, Delaunay triangulation algorithm, kruskal minimum spanning tree algorithm, Douglas algorithm;
+For kruskal.cpp: edge operator, Delaunay triangulation algorithm, kruskal minimum spanning tree algorithm, Douglas-Peucker algorithm;
 
 For fourier.cpp: fast Fourier transform algorithm, inverse discrete Fourier transform algorithm;
 
