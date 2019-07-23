@@ -33,6 +33,7 @@ fourier.exe使用进阶教程:
 7. 按空格暂停绘制
 
 8. 可以修改data.in以设置初始点阵
+
    注: kruskal.exe会将运算结果输出到data.in中
 
 ## 版权声明
@@ -75,7 +76,9 @@ Fourier.exe using advanced tutorials:
   Note: when drawing, the program does not display the dot matrix by default. Press F1 to display the dot matrix
 
 7. Pause drawing by space
+
 8. You can modify data.in to set the initial lattice
+
    Note: kruskal.exe will output the calculation result to data.in
 
 ## Copyright statement
