@@ -52,7 +52,7 @@ fourier.exe使用进阶教程:
 
 本程序源代码可任意修改并任意使用，但禁止商业化用途。一旦使用，任何不可知事件都与原作者无关，原作者不承担任何后果。
 
-如果您喜欢，希望可以在页面某处保留原作者(KOG)版权信息。
+如果您喜欢，希望可以在页面某处保留原作者(TheKOG)版权信息。
 
 联系方式: 1458038842@qq.com
 
@@ -107,7 +107,7 @@ For fourier.cpp: fast Fourier transform algorithm, inverse discrete Fourier tran
 
 The program source code can be modified and used arbitrarily, but commercial use is prohibited.Once used, any unknowable event has nothing to do with the original author and the original author bears no consequences.
 
-If you like, you would like to have the original author (KOG) copyright information somewhere on the page.
+If you like, you would like to have the original author (TheKOG) copyright information somewhere on the page.
 
 Contact information: 1458038842@qq.com
 
