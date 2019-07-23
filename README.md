@@ -52,12 +52,11 @@ fourier.exe使用进阶教程:
 ## English
 
 Project usage process:
-
 1. Run the kruskal.exe
 
 2. Input image path and gradient threshold according to the process (default is 200)
 
-   Note: the higher the threshold, the more sparse the contour
+  Note: the higher the threshold, the more sparse the contour
 
 3. Run the Fourier.exe
 
@@ -66,7 +65,6 @@ Project usage process:
 -----------------------------------You can skip the following-----------------------------------
 
 Fourier.exe using advanced tutorials:
-
 1. Click the screen in order to form a dot matrix
 
 2. Press Z to undo a point
@@ -79,12 +77,12 @@ Fourier.exe using advanced tutorials:
 
 6. Press F1 to show/hide the dot matrix
 
-   Note: when drawing, the program does not display the dot matrix by default. Press F1 to display the dot matrix
+  Note: when drawing, the program does not display the dot matrix by default. Press F1 to display the dot matrix
 
 7. Pause drawing by space
 
 8. You can modify data.in to set the initial lattice
-   Note: kruskal.exe will output the calculation result to data.in
+  Note: kruskal.exe will output the calculation result to data.in
 
 ## Copyright statement
 
@@ -95,3 +93,4 @@ If you like, you would like to have the original author (KOG) copyright informat
 Contact information: 1458038842@qq.com
 
 Thank you.
+
