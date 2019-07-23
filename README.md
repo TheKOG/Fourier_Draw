@@ -99,7 +99,7 @@ For kruskal.cpp:	g++ kruskal.cpp -o kruskal -lgdi32
 
 For fourier.cpp: 	g++ fourier.cpp -o fourier -lgdi32 -mwindows 
 
-## Introduction to algorithm
+## Introduction to algorithms
 
 For kruskal.cpp: edge operator, Delaunay triangulation algorithm, kruskal minimum spanning tree algorithm, Douglas algorithm;
 
