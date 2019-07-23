@@ -29,6 +29,8 @@ fourier.exe使用进阶教程:
 
 如果您喜欢，希望可以在页面某处保留原作者(KOG)版权信息。
 
+联系方式: 1458038842@qq.com
+
 感谢。
 
 
@@ -65,5 +67,7 @@ Fourier.exe using advanced tutorials:
 The program source code can be modified and used arbitrarily, but commercial use is prohibited.Once used, any unknowable event has nothing to do with the original author and the original author bears no consequences.
 
 If you like, you would like to have the original author (KOG) copyright information somewhere on the page.
+
+Contact information: 1458038842@qq.com
 
 Thank you.
