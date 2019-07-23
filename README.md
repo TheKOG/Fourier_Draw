@@ -36,6 +36,18 @@ fourier.exe使用进阶教程:
 
    注: kruskal.exe会将运算结果输出到data.in中
 
+## 编译指令
+
+对于kruskal.cpp:	g++ kruskal.cpp -o kruskal -lgdi32
+
+对于fourier.cpp: 	g++ fourier.cpp -o fourier -lgdi32 -mwindows 
+
+## 算法介绍
+
+对于kruskal.cpp:	边缘算子, Delaunay三角剖分算法, kruskal最小生成树算法, Douglas算法;
+
+对于fourier.cpp:	快速傅里叶变换算法, 逆离散傅里叶变换算法;
+
 ## 版权声明
 
 本程序源代码可任意修改并任意使用，但禁止商业化用途。一旦使用，任何不可知事件都与原作者无关，原作者不承担任何后果。
@@ -64,7 +76,7 @@ Project usage process:
 
 -----------------------------------You can skip the following-----------------------------------
 
-Fourier.exe using advanced tutorials:
+fourier.exe using advanced tutorials:
 
 1. Click the screen in order to form a dot matrix
 2. Press Z to undo a point
@@ -80,6 +92,18 @@ Fourier.exe using advanced tutorials:
 8. You can modify data.in to set the initial lattice
 
    Note: kruskal.exe will output the calculation result to data.in
+
+## Compiled instruction
+
+For kruskal.cpp:	g++ kruskal.cpp -o kruskal -lgdi32
+
+For fourier.cpp: 	g++ fourier.cpp -o fourier -lgdi32 -mwindows 
+
+## Introduction to algorithm
+
+For kruskal.cpp: edge operator, Delaunay triangulation algorithm, kruskal minimum spanning tree algorithm, Douglas algorithm;
+
+For fourier.cpp: fast Fourier transform algorithm, inverse discrete Fourier transform algorithm;
 
 ## Copyright statement
 
