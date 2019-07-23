@@ -2,7 +2,7 @@ Project usage process:
 
 1. Run the kruskal.exe
 
-2. Input image path and gradient threshold according to the process (default is 200)
+2. Input image path(The bitmap format) and gradient threshold according to the process (default is 200)
 
    Note: the higher the threshold, the more sparse the contour
 
