@@ -4,7 +4,7 @@
 
 1. 运行kruskal.exe
 
-2. 按照流程输入图片路径和梯度阀值(默认为20)
+2. 按照流程输入图片路径和梯度阀值(默认为200)
 
    注: 阀值越高, 轮廓越稀疏
 
@@ -55,7 +55,7 @@ Project usage process:
 
 1. Run the kruskal.exe
 
-2. Input image path and gradient threshold according to the process (default is 20)
+2. Input image path and gradient threshold according to the process (default is 200)
 
    Note: the higher the threshold, the more sparse the contour
 
