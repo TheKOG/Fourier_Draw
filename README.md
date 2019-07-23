@@ -1,4 +1,4 @@
-## 简体中文
+# 简体中文
 
 项目使用流程: 
 
@@ -58,11 +58,9 @@ fourier.exe使用进阶教程:
 
 感谢。
 
+<br>
 
-
-
-
-## English
+# English
 
 Project usage process:
 
