@@ -164,7 +164,7 @@ int getBlue(COLORREF a){
     aph=aph<<8;
     return b-aph;
 }
-int tmp[2048][2048][3];
+int tmp[1800][3200][3];
 int Calc(int x,int y){
     int re=0;
     for(int c=0;c<3;c++){
