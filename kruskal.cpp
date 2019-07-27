@@ -281,8 +281,8 @@ signed main(){
     cerr<<"Extracting image outline...\n";
     int mw=FullWidth-70,mh=FullHeight-70;
     bool *apr=new bool[(mw+28)*mh];
-    for(int x=2;x<width;x++){
-	for(int y=2;y<height;y++){
+    for(int x=2;x<width-1;x++){
+	for(int y=2;y<height-1;y++){
 	    int G=Calc(x,y);
 	    if(G>=thre){
 		int mx=max(width,height);
