@@ -1,5 +1,7 @@
 #include<windows.h>
 #include<bits/stdc++.h>
+#define FullWidth GetSystemMetrics(SM_CXSCREEN)
+#define FullHeight GetSystemMetrics(SM_CYSCREEN)
 using namespace std;
 const int N=1e6+28;
 HBITMAP hbmp;
@@ -266,7 +268,7 @@ signed main(){
     GetObject(hbmp,sizeof(BITMAP),&bmp);
     width=(int)bmp.bmWidth,height=(int)bmp.bmHeight;
     cerr<<"Image's message: Width "<<width<<", Height "<<height<<".\n";
-    cerr<<"Extracting the pixels' message.\n";
+    cerr<<"Extracting the pixels' message...\n";
     GetColor();
     cerr<<"Enter the threshold value(default 200): ";
     char chh;
@@ -277,16 +279,33 @@ signed main(){
 	for(;isdigit(chh);chh=getchar())thre=thre*10+chh-'0';
     }
     cerr<<"Extracting image outline...\n";
-    bool *apr=new bool[655*655];
+    int mw=FullWidth-70,mh=FullHeight-70;
+    bool *apr=new bool[(mw+28)*mh];
     for(int x=2;x<width;x++){
 	for(int y=2;y<height;y++){
 	    int G=Calc(x,y);
 	    if(G>=thre){
 		int mx=max(width,height);
-		int ptr=(x*650/mx)*650+y*650/mx;
-		if(apr[ptr])continue;;
-		apr[ptr]=1;
-		pos[++tot]=Complex(x*650/mx,y*650/mx);
+		if(mx<650){
+		    pos[++tot]=Complex(x*650/mx,y*650/mx);
+		}else if(width<mw&&height<mh)pos[++tot]=Complex(x,y);
+		else{
+		    double ww=1.0*mw/width,hh=1.0*mh/height;
+		    int nx,ny,ptr;
+		    if(ww<hh){
+			nx=x*ww,ny=y*ww;
+			ptr=nx*mh+ny;
+			if(apr[ptr])continue;
+			apr[ptr]=1;
+			pos[++tot]=Complex(nx,ny);
+		    }else{
+			nx=x*hh,ny=y*hh;
+			ptr=nx*mh+ny;
+			if(apr[ptr])continue;
+			apr[ptr]=1;
+			pos[++tot]=Complex(nx,ny);
+		    }
+		}
 	    }
 	}
     }

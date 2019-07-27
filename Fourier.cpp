@@ -4,8 +4,7 @@
 #define FullWidth GetSystemMetrics(SM_CXSCREEN)
 #define FullHeight GetSystemMetrics(SM_CYSCREEN)
 using namespace std;
-const int Height=650;
-const int Width=650;
+int Height=650,Width=650;
 const int N=1e6+28;
 namespace FFT{
     const double pi=acos(-1);
@@ -115,7 +114,7 @@ HBRUSH black,red,green,blue,white,grey,dark,Indirect;
 HPEN Black,White,Green,Red,Blue,Grey;
 void Init(HWND hwnd){
     srand(time(0));
-    SetWindowLong(hwnd,GWL_STYLE,GetWindowLong(hwnd,GWL_STYLE)&(~WS_MAXIMIZEBOX&~WS_THICKFRAME));
+    //SetWindowLong(hwnd,GWL_STYLE,GetWindowLong(hwnd,GWL_STYLE)&(~WS_MAXIMIZEBOX&~WS_THICKFRAME));
     black=CreateSolidBrush(RGB(0,0,0));
     grey=CreateSolidBrush(RGB(100,100,100));
     red=CreateSolidBrush(RGB(255,0,0));
@@ -135,7 +134,7 @@ void Init(HWND hwnd){
     Indirect=CreateBrushIndirect(&logbr);
     WinMap=GetDC(hwnd);
     dWinMap=CreateCompatibleDC(WinMap);
-    dbm=CreateCompatibleBitmap(WinMap,Width,Height);
+    dbm=CreateCompatibleBitmap(WinMap,FullWidth,FullHeight);
     SelectObject(dWinMap,dbm);
     SetBkMode(dWinMap,TRANSPARENT);
     freopen("data.in","r",stdin);
@@ -243,6 +242,12 @@ LRESULT CALLBACK WndProc(HWND hwnd,UINT Message,WPARAM wParam,LPARAM lParam){
 	}
 	}
 	break;
+    }
+    case WM_PAINT:{
+	RECT rct;
+	GetWindowRect(hwnd,&rct);
+	Width=rct.right-rct.left;
+	Height=rct.bottom-rct.top;
     }
     default:return DefWindowProc(hwnd,Message,wParam,lParam);
     }
