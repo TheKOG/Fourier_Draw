@@ -30,9 +30,11 @@ fourier.exe使用进阶教程:
 
    注: 绘制时, 程序默认不显示点阵, 此时按F1以显示点阵
 
-7. 按空格暂停绘制
+7. 按F2隐藏/显示矢量
 
-8. 可以修改data.in以设置初始点阵
+8. 按空格暂停绘制
+
+9. 可以修改data.in以设置初始点阵
 
    注: kruskal.exe会将运算结果输出到data.in中
 
@@ -63,31 +65,38 @@ fourier.exe使用进阶教程:
 # English
 
 Project usage process:
-
 1. Run the kruskal.exe
+
 2. Input image path (the bitmap format) and gradient threshold (default is 200) according to the process 
 
   Note: the higher the threshold, the more sparse the contour
 
 3. Run the Fourier.exe
+
 4. Press F5 to start drawing
 
 -----------------------------------You can skip the following-----------------------------------
 
 fourier.exe using advanced tutorials:
-
 1. Click the screen in order to form a dot matrix
+
 2. Press Z to undo a point
+
 3. Press X to restore a point
+
 4. Press Esc to clear all points
+
 5. Press F5 to start/end the drawing
+
 6. Press F1 to show/hide the dot matrix
 
-  Note: when drawing, the program does not display the dot matrix by default. Press F1 to display the dot matrix
+   Note: when drawing, the program does not display the dot matrix by default. Press F1 to display the dot matrix
 
-7. Pause drawing by space
+7. Press F2 to hide/show the vector
 
-8. You can modify data.in to set the initial lattice
+8. Pause drawing by space
+
+9. You can modify data.in to set the initial lattice
 
    Note: kruskal.exe will output the calculation result to data.in
 

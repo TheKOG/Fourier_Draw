@@ -59,7 +59,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
 void Paint(HWND hwnd);
 void Init(HWND hwnd);
 void Copy(char *buf);
-int tot,getStart,Stop,Show;
+int tot,getStart,Stop;
 double step;
 Complex pos[N],point[N];
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -148,7 +148,7 @@ void Init(HWND hwnd){
     freopen("CON","r",stdin);
 }
 char s[256];
-int cnt;
+int cnt,Show,Hide;
 Complex draw[N],vec[N];
 void Paint(HWND hwnd){
     SelectObject(dWinMap,white);
@@ -169,10 +169,10 @@ void Paint(HWND hwnd){
 	for(int i=0;i<lim;i++){
 	    int len=(int)Length(vec[i]);
 	    SelectObject(dWinMap,Red);
-	    Ellipse(dWinMap,(int)draw[cnt].x-len,(int)draw[cnt].y-len,(int)draw[cnt].x+len,(int)draw[cnt].y+len);
+	    if(!Hide)Ellipse(dWinMap,(int)draw[cnt].x-len,(int)draw[cnt].y-len,(int)draw[cnt].x+len,(int)draw[cnt].y+len);
 	    draw[cnt]=draw[cnt]+vec[i];
 	    SelectObject(dWinMap,Blue);
-	    LineTo(dWinMap,(int)draw[cnt].x,(int)draw[cnt].y);
+	    if(!Hide)LineTo(dWinMap,(int)draw[cnt].x,(int)draw[cnt].y);
 	}
 	SelectObject(dWinMap,Green);
 	MoveToEx(dWinMap,(int)draw[1].x,(int)draw[1].y,NULL);
@@ -235,6 +235,10 @@ LRESULT CALLBACK WndProc(HWND hwnd,UINT Message,WPARAM wParam,LPARAM lParam){
 	}
 	case VK_F1:{
 	    Show=1-Show;
+	    break;
+	}
+	case VK_F2:{
+	    Hide=1-Hide;
 	    break;
 	}
 	}
