@@ -58,6 +58,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
 void Paint(HWND hwnd);
 void Init(HWND hwnd);
 void Copy(char *buf);
+void DrawTransBitmap(HDC hdcDest,int nXOriginDest,int nYOriginDest,int nWidthDest,int nHeightDest,HDC hdcSrc,int nXOriginSrc,int nYOriginSrc,COLORREF crTransparent);
 int tot,getStart,Stop;
 double step;
 Complex pos[N],point[N];
@@ -110,8 +111,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     }
     return msg.wParam;
 }
-HDC WinMap,dWinMap;
-HBITMAP dbm;
+HDC WinMap,dWinMap,ddm;
+HBITMAP dbm,ddbm;
 HBRUSH black,red,green,blue,white,grey,dark,Indirect;
 HPEN Black,White,Green,Red,Blue,Grey;
 void Init(HWND hwnd){
@@ -139,6 +140,11 @@ void Init(HWND hwnd){
     dbm=CreateCompatibleBitmap(WinMap,FullWidth,FullHeight);
     SelectObject(dWinMap,dbm);
     SetBkMode(dWinMap,TRANSPARENT);
+    ddm=CreateCompatibleDC(dWinMap);
+    ddbm=CreateCompatibleBitmap(dWinMap,FullWidth,FullHeight);
+    SelectObject(ddm,ddbm);
+    SelectObject(ddm,Green);
+    SetBkMode(ddm,TRANSPARENT);
     freopen("data.in","r",stdin);
     int tmp;
     if(scanf("%d",&tmp)!=EOF){
@@ -163,7 +169,13 @@ void Paint(HWND hwnd){
     }
     if(getStart){
 	SelectObject(dWinMap,Indirect);
-	if(step<1e-7)cnt=0;
+	if(step<1e-7){
+	    cnt=0;
+	    SelectObject(ddm,white);
+	    SelectObject(ddm,White);
+	    Rectangle(ddm,0,0,FullWidth,FullHeight);
+	    SelectObject(ddm,Green);
+	}
 	CalcPos(step,pos,vec);
 	draw[++cnt]=Complex(0,0);
 	MoveToEx(dWinMap,0,0,NULL);
@@ -175,11 +187,12 @@ void Paint(HWND hwnd){
 	    SelectObject(dWinMap,Blue);
 	    if(!Hide)LineTo(dWinMap,(int)draw[cnt].x,(int)draw[cnt].y);
 	}
-	SelectObject(dWinMap,Green);
-	MoveToEx(dWinMap,(int)draw[1].x,(int)draw[1].y,NULL);
-	for(int i=2;i<=cnt;i++)
-	    LineTo(dWinMap,(int)draw[i].x,(int)draw[i].y);
+	if(cnt>1){
+	    MoveToEx(ddm,(int)draw[cnt-1].x,(int)draw[cnt-1].y,NULL);
+	    LineTo(ddm,(int)draw[cnt].x,(int)draw[cnt].y);
+	}
     }
+    if(getStart)DrawTransBitmap(dWinMap,0,0,Width,Height,ddm,0,0,RGB(255,255,255));
     BitBlt(WinMap,0,0,Width,Height,dWinMap,0,0,SRCCOPY);
 }
 void Copy(char *buf){
@@ -193,6 +206,26 @@ void Copy(char *buf){
 	CloseClipboard();
 	GlobalFree(hmem);
     }
+}
+void DrawTransBitmap(HDC hdcDest,int nXOriginDest,int nYOriginDest,int nWidthDest,int nHeightDest,HDC hdcSrc,int nXOriginSrc,int nYOriginSrc,COLORREF crTransparent){
+    HBITMAP hOldImageBMP, hImageBMP = CreateCompatibleBitmap(hdcDest, nWidthDest, nHeightDest);   
+    HBITMAP hOldMaskBMP, hMaskBMP = CreateBitmap(nWidthDest, nHeightDest, 1, 1, NULL);  
+    HDC hImageDC = CreateCompatibleDC(hdcDest); 
+    HDC hMaskDC = CreateCompatibleDC(hdcDest);
+    hOldImageBMP = (HBITMAP)SelectObject(hImageDC, hImageBMP);
+    hOldMaskBMP = (HBITMAP)SelectObject(hMaskDC, hMaskBMP);
+    BitBlt(hImageDC, 0, 0, nWidthDest, nHeightDest, hdcSrc, nXOriginSrc, nYOriginSrc, SRCCOPY);
+    SetBkColor(hImageDC, crTransparent);
+    BitBlt(hMaskDC, 0, 0, nWidthDest, nHeightDest, hImageDC, 0, 0, SRCCOPY);
+    BitBlt(hdcDest, nXOriginDest, nYOriginDest, nWidthDest, nHeightDest, hImageDC, 0, 0, SRCINVERT);
+    BitBlt(hdcDest, nXOriginDest, nYOriginDest, nWidthDest, nHeightDest, hMaskDC, 0, 0, SRCAND);
+    BitBlt(hdcDest, nXOriginDest, nYOriginDest, nWidthDest, nHeightDest, hImageDC, 0, 0, SRCINVERT);
+    SelectObject(hImageDC, hOldImageBMP);
+    DeleteDC(hImageDC);
+    SelectObject(hMaskDC, hOldMaskBMP);
+    DeleteDC(hMaskDC);
+    DeleteObject(hImageBMP);
+    DeleteObject(hMaskBMP);
 }
 LRESULT CALLBACK WndProc(HWND hwnd,UINT Message,WPARAM wParam,LPARAM lParam){
     switch(Message){
@@ -227,6 +260,9 @@ LRESULT CALLBACK WndProc(HWND hwnd,UINT Message,WPARAM wParam,LPARAM lParam){
 		fft(tot,pos,-1);
 	    }else{
 		getStart=0;
+		SelectObject(ddm,white);
+		SelectObject(ddm,White);
+		Rectangle(ddm,0,0,Width,Height);
 	    }
 	    break;
 	}
