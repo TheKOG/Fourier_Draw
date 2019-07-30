@@ -95,7 +95,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	    TranslateMessage(&msg);
 	    DispatchMessage(&msg);
 	}else{
-	    if(clock()>=start+0.1*CLOCKS_PER_SEC)start+=0.1*CLOCKS_PER_SEC;
+	    double wait=0.1;
+	    if(getStart&&tot>=10000)wait=0.01;
+	    if(clock()>=start+wait*CLOCKS_PER_SEC)start+=wait*CLOCKS_PER_SEC;
 	    else continue;
 	    if(getStart&&Stop==0){
 		if(step>1.0*tot-(1e-7))step=0;
@@ -168,7 +170,7 @@ void Paint(HWND hwnd){
 	for(int i=0;i<lim;i++){
 	    int len=(int)Length(vec[i]);
 	    SelectObject(dWinMap,Red);
-	    if(!Hide)Ellipse(dWinMap,(int)draw[cnt].x-len,(int)draw[cnt].y-len,(int)draw[cnt].x+len,(int)draw[cnt].y+len);
+	    if(Hide==0&&len)Ellipse(dWinMap,(int)draw[cnt].x-len,(int)draw[cnt].y-len,(int)draw[cnt].x+len,(int)draw[cnt].y+len);
 	    draw[cnt]=draw[cnt]+vec[i];
 	    SelectObject(dWinMap,Blue);
 	    if(!Hide)LineTo(dWinMap,(int)draw[cnt].x,(int)draw[cnt].y);

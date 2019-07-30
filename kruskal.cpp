@@ -248,7 +248,7 @@ void Douglas(int l,int r){
 	double dist=PtoE(ans[i],eg);
 	if(dist>mx||(dist==dist&&mx!=mx)||(mx==-1&&isnan(dist)))mx=dist,mid=i;
     }
-    if(mx<5&&mx==mx)return;
+    if(mx<6.8&&mx==mx)return;
     Douglas(l,mid);
     Douglas(mid,r);
 }
