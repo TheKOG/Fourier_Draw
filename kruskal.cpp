@@ -3,7 +3,7 @@
 #define FullWidth GetSystemMetrics(SM_CXSCREEN)
 #define FullHeight GetSystemMetrics(SM_CYSCREEN)
 using namespace std;
-const int N=1e6+28;
+const int N=2e6+28;
 HBITMAP hbmp;
 BITMAP bmp;
 HDC hbm;
